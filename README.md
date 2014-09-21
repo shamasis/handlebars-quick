@@ -1,4 +1,4 @@
-# Handlebars Quicky
+# Handlebars Quick
 
 Simple extension for handlebars to get up and running with minimalistic API.
 

@@ -1,5 +1,5 @@
 {
-  "name": "handlebars-quicky",
+  "name": "handlebars-quick",
   "version": "0.0.1",
   "description": "Simple extension for handlebars to get up and running with minimalistic API.",
 
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/shamasis/germ-io-mutations"
+    "url": "https://github.com/shamasis/handlebars-quick.git"
   },
   "author": "Shamasis Bhattacharya <mail@shamasis.net>",
   "license": "MIT"
