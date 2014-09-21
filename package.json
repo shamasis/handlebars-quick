@@ -1,14 +1,18 @@
 {
-  "name": "handlebars-quicky",
+  "name": "handlebars-quick",
   "version": "0.0.1",
-  "description": "Simple extension for handlebars to get up and running with minimalistic API.",
+  "description": "Simple extension for handlebars to get up and running with minimalistic API",
+  "keywords": [
+    "handlebars"
+  ],
 
+  "main": "handlebars.quick.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/shamasis/germ-io-mutations"
+    "url": "https://github.com/shamasis/handlebars-quick.git"
   },
   "author": "Shamasis Bhattacharya <mail@shamasis.net>",
   "license": "MIT"

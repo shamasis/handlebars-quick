@@ -1,0 +1,20 @@
+{
+  "name": "handlebars-quick",
+  "version": "0.0.1",
+  "homepage": "https://github.com/shamasis/handlebars-quick",
+  "authors": [
+    "Shamasis Bhattacharya <mail@shamasis.net>"
+  ],
+  "description": "Simple extension for handlebars to get up and running with minimalistic API",
+  "main": "handlebars.quick.min.js",
+  "keywords": [
+    "handlebars"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "*.sublime-*"
+  ]
+}
