@@ -1,3 +1,5 @@
+[![Bower version](https://badge.fury.io/bo/handlebars-quick.svg)](https://github.com/shamasis/handlebars-quick.git)
+
 # Handlebars Quick
 
 Simple extension for handlebars to get up and running with minimalistic API.
