@@ -1,5 +1,5 @@
 /**!
- * @license Handlebars Quick
+ * @license Handlebars Quick (https://github.com/shamasis/handlebars-quick)
  *
  * Third-party attributions:
  * microAjax - Copyright (c) 2008 Stefan Lange-Hegermann
@@ -71,7 +71,8 @@
         (typeof options !== 'object') && (options = {});
 
         // ensure that the target element provided is a valid HTML DOM object in case param is a string
-        (typeof options.target === 'string') && (options.target = glob.document.getElementById(options.target));
+        (typeof options.target === 'string') && (options.target =
+            glob.document.getElementById(options.target.replace(/^#/g, E)));
 
         // Compile the template
         options.target.innerHTML = Handlebars.compile(options.template)(options.spec);
