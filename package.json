@@ -1,6 +1,6 @@
 {
   "name": "handlebars-quick",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Simple extension for handlebars to get up and running with minimalistic API",
   "keywords": [
     "handlebars"
