@@ -4,7 +4,8 @@ describe('Handlebars', function () {
     });
 
     describe('Quick plugin', function () {
-        beforeEach(function () {
+        afterEach(function () {
+            jasmine.Ajax.uninstall();
             document.getElementById('outlet').innerHTML = '';
         });
 
@@ -28,15 +29,31 @@ describe('Handlebars', function () {
         });
 
         it('must be able to fetch template and spec asynchronously', function () {
-            // var doneFn = jasmine.createSpy("success");
+            var doneFn = jasmine.createSpy("success");
 
-            // Handlebars.quickAsync({
-            //     templateUrl: 'post-entry.hbt',
-            //     specUrl: 'post-entry.json',
-            //     target: '#content'
-            // }, doneFn);
+            jasmine.Ajax.install(); // install fake ajax
 
-            // expect(doneFn).toHaveBeenCalled();
+            // create fake and expected ajax response for template
+            jasmine.Ajax.stubRequest('post-entry.hbt').andReturn({
+                responseText: '<div class="entry"><h1>{{title}}</h1><div class="body">{{body}}</div></div>'
+            });
+
+            // create fake and expected ajax response for spec
+            jasmine.Ajax.stubRequest('post-entry.json').andReturn({
+                responseText: '{"title": "Another Post", "body": "Another post!"}'
+            });
+
+            Handlebars.quickAsync({
+                templateUrl: 'post-entry.hbt',
+                specUrl: 'post-entry.json',
+                target: '#outlet'
+            }, function () {
+                expect(document.getElementById('outlet').innerHTML)
+                        .toBe('<div class="entry"><h1>Another Post</h1><div class="body">Another post!</div></div>');
+                doneFn();
+            });
+
+            expect(doneFn).toHaveBeenCalled();
         });
     });
 });
