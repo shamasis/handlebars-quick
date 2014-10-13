@@ -1,4 +1,4 @@
-describe('Sane Handlebars', function () {
+describe('Handlebars', function () {
     it('must be available in global scope', function () {
         expect(window.Handlebars).toBeDefined();
     });
@@ -14,16 +14,17 @@ describe('Sane Handlebars', function () {
         });
 
         it('must be able to quick apply template', function () {
-            Handlebars.quick({
+            window.Handlebars.quick({
                 template: '<div class="entry"><h1>{{title}}</h1><div class="body">{{body}}</div></div>',
                 spec: {
-                    title: "My New Post",
-                    body: "This is my first post!"
+                    title: 'My New Post',
+                    body: 'This is my first post!'
                 },
                 target: '#outlet'
             });
 
-            expect(document.getElementById('outlet').innerHTML).toBe('<div class="entry"><h1>My New Post</h1><div class="body">This is my first post!</div></div>');
+            expect(document.getElementById('outlet').innerHTML)
+                .toBe('<div class="entry"><h1>My New Post</h1><div class="body">This is my first post!</div></div>');
         });
 
         it('must be able to fetch template and spec asynchronously', function () {
