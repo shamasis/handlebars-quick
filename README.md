@@ -2,17 +2,22 @@
 
 # Handlebars Quick
 
-Simple extension for handlebars to get up and running with minimalistic API.
+Simple extension for handlebars to get up and running within minutes and with no dependency on other libraries.
 
 ## Background
 
-When starting off with handlebars, for real practical usage, one requires a number of assistive libraries. For instance, saving handlebars templates and specs within an `HTML` page being developed is not a feasible solution.
+_[Handlebars](http://handlebarsjs.com) provides the power necessary to let you build semantic templates effectively with
+no frustration._ This plugin makes using Handlebars easier than before.
 
-This simple extension makes life easier for developers starting to use handlebars or for developers who simply need the tempting abilities of handlebars right out of the box.
+This simple extension makes life easier for developers starting to use handlebars or for developers who simply need the
+tempting abilities of handlebars right out of the box.
 
 ## What do you get?
 
-This extension makes using handlebars a stroll in the park. Simply store your HTML template in a file, your specifications in a JSON file and ask Handlebars Quick to process them and apply the result to a DOM element.
+Simply store your HTML template in a file, your specifications in a JSON file and ask Handlebars Quick to access them and 
+apply the result to a DOM element.
+
+You would not need `jQuery` or other libraries for AJAX or DOM manipulation.
 
 ## Usage Example
 
