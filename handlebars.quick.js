@@ -106,7 +106,7 @@
         });
 
         new MicroAjax(options.specUrl, function (response) {
-            options.spec = response;
+            options.spec = JSON.parse(response);
             process();
         });
     };
