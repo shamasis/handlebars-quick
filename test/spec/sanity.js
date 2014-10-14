@@ -4,9 +4,21 @@ describe('Handlebars', function () {
     });
 
     describe('Quick plugin', function () {
+
+        beforeEach(function () {
+            var outlet = document.createElement('div');
+            outlet.setAttribute('id', 'outlet');
+            document.body.appendChild(outlet);
+            outlet = null;
+        });
+
         afterEach(function () {
             jasmine.Ajax.uninstall();
-            document.getElementById('outlet').innerHTML = '';
+            var outlet;
+            if ((outlet = document.getElementById('outlet'))) {
+                outlet.parentNode.removeChild(outlet);
+                outlet = null;
+            }
         });
 
         it('must be available', function () {
