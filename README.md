@@ -14,7 +14,7 @@ tempting abilities of handlebars right out of the box.
 
 ## What do you get?
 
-Simply store your HTML template in a file, your specifications in a JSON file and ask Handlebars Quick to access them and 
+Simply store your HTML template in a file, your specifications in a JSON file and ask Handlebars Quick to access them and
 apply the result to a DOM element.
 
 You would not need `jQuery` or other libraries for AJAX or DOM manipulation.
@@ -65,3 +65,9 @@ function to fetch them using `AJAX`.
 </body>
 </html>
 ```
+
+## Installing Handlebars Quick
+
+You can either download the latest release from GitHub or use `bower` to install the package. To download, simply follow
+the [latest release link](https://github.com/shamasis/handlebars-quick/releases/latest) on GitHub. To install the
+package using bower, type `bower install handlebars-quick` in your project workind directory using a terminal.
