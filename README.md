@@ -21,6 +21,8 @@ You would not need `jQuery` or other libraries for AJAX or DOM manipulation.
 
 ## Usage Example
 
+> __`v1.x` users of this plugin should refer to the upgrading section before upgrading.__
+
 ```html
 <html>
 <head>
@@ -127,3 +129,13 @@ explanatory.
 You can either download the latest release from GitHub or use `bower` to install the package. To download, simply follow
 the [latest release link](https://github.com/shamasis/handlebars-quick/releases/latest) on GitHub. To install the
 package using bower, type `bower install handlebars-quick` in your project working directory using a terminal.
+
+## Upgrading from v1.x of this plugin to v2.x
+
+Handlebars.quick `1.x` users would need to modify their usage of this plugin since `v2.0` introduces breaking changes.
+You should upgrade only if you have the oportunity to change your codebase.
+
+- `1.x` used actual file references while `2.x` uses template and spec file names only.
+- `1.x` accepted all parameters as objects while `2.x` accepts polymorphic parameters.
+
+Happy Templating!
