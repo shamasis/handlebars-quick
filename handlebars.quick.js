@@ -1,4 +1,4 @@
-/*! handlebars-quick v1.0.1 by Shamasis Bhattacharya <mail@shamasis.net> (2015-02-09) */
+/*! handlebars-quick v2.0.0-development by Shamasis Bhattacharya <mail@shamasis.net> (2015-02-09) */
 (function (glob) {
     glob.MicroAjax = function (url, callbackFunction) {
         this.bindFunction = function (caller, object) {
