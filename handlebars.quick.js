@@ -74,6 +74,13 @@
             specFileExtension: '.json'
         },
 
+        /**
+         * @private
+         *
+         * @param {string} url
+         * @param {function} callback
+         * @param {*} args
+         */
         fetch: function (url, callback, args) {
             var scope = this;
             new MicroAjax(url, function (response) {
@@ -81,6 +88,13 @@
             });
         },
 
+        /**
+         * @private
+         *
+         * @param {string} type `template`, `spec` or `partial`
+         * @param {string} name
+         * @returns {string}
+         */
         getUrl: function (type, name) {
             var url = E;
 
@@ -100,6 +114,10 @@
             return url;
         },
 
+        /**
+         * @param {string|array<string>} partials
+         * @param {function} callback
+         */
         registerPartialAsync: function (partials, callback) {
             var loaded = 0,
                 i,
@@ -111,13 +129,13 @@
                     // execute callback when all partials are loaded
                     // verify requested partial count vs load count so that synchronous ajax calls can be supported
                     if ((++loaded) === partials.length) {
-                        callback && callback.call(this);
+                        Handlebars.Utils.isFunction(callback) && callback.call(this);
                     }
 
                 };
 
             if (!defined(partials)) {
-                callback && callback.call(this);
+                Handlebars.Utils.isFunction(callback) && callback.call(this);
                 return;
             }
 
@@ -136,6 +154,7 @@
          * @param {string} target
          * @param {string} template
          * @param {object} spec
+         * @param {function} callback
          */
         render: function (target, template, spec, callback) {
             var elements,
@@ -156,7 +175,7 @@
                 if (typeof target === 'string') {
                     elements = glob.document.getElementsByTagName(target);
                 }
-                else if (glob.Array.isArray(target)) {
+                else if (Handlebars.Utils.isArray(target)) {
                     elements = [].concat(target);
                 }
                 else if (target) {
@@ -172,18 +191,16 @@
                 }
             }
 
-            callback && callback();
+            Handlebars.Utils.isFunction(callback) && callback();
 
             // return promise;
         },
 
         /**
-         * [renderAsync description]
-         * @param {[type]} target [description]
-         * @param {[type]} templateName [description]
-         * @param {[type]} specName [description]
-         * @param {Function} callback [description]
-         * @returns {[type]} [description]
+         * @param {string} target
+         * @param {string} templateName
+         * @param {string|object} specName
+         * @param {function} callback
          */
         renderAsync: function (target, templateName, specName, callback) {
             var template,
@@ -193,7 +210,7 @@
                     // check if spec and template are both available and then call render.
                     if (template && spec) {
                         this.render(target, template, spec);
-                        callback && callback.call(this);
+                        Handlebars.Utils.isFunction(callback) && callback.call(this);
                     }
                 };
 
