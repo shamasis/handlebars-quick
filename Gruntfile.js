@@ -3,9 +3,22 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+
+        concat: {
+            options: {
+                stripBanners: true,
+                banner: '/*! <%= pkg.name %> v<%= pkg.version %> by <%=pkg.author%> ' +
+                    '(<%= grunt.template.today("yyyy-mm-dd") %>) */\n'
+            },
+            dist: {
+                src: ['lib/microajax.js', 'lib/handlebars.quick.js'],
+                dest: 'handlebars.quick.js',
+            },
+        },
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %> v<%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>) */\n'
+                banner: '/*! <%= pkg.name %> v<%= pkg.version %> by <%=pkg.author%> ' +
+                    '(<%= grunt.template.today("yyyy-mm-dd") %>) */\n'
             },
             build: {
                 src: 'handlebars.quick.js',
@@ -18,7 +31,7 @@ module.exports = function (grunt) {
                 jshintrc: true
             },
 
-            all: ['Gruntfile.js', 'handlebars.quick.js', 'test/spec/*.js']
+            all: ['Gruntfile.js', 'lib/*.js', 'test/spec/*.js']
         },
 
         jasmine: {
@@ -27,7 +40,7 @@ module.exports = function (grunt) {
                     vendor: [
                         'test/suite/jasmine/mock-ajax.js',
                         'test/suite/handlebars/handlebars-v2.0.0.js',
-                        'handlebars.quick.min.js'
+                        'handlebars.quick.js'
                     ],
                     specs: ['test/spec/*.js']
                 }
@@ -36,11 +49,12 @@ module.exports = function (grunt) {
     });
 
     // Load the plugin that provides the "uglify" task.
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'uglify', 'jasmine']);
+    grunt.registerTask('default', ['concat', 'jshint', 'uglify', 'jasmine']);
 
 };
