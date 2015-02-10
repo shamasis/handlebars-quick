@@ -3,11 +3,12 @@
   "version": "2.0.0-development",
   "description": "Simple extension for handlebars to get up and running with minimalistic API",
   "keywords": [
-    "handlebars"
+    "handlebars",
+    "async"
   ],
   "main": "handlebars.quick.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt"
   },
   "repository": {
     "type": "git",
