@@ -77,7 +77,8 @@ function to fetch them using `AJAX`.
 > specification file to have `.json` extension. It also expects the file to stay in a path relative to the URL. You can
 > configure these behaviours in `Handlebars.quick.options` object.
 
-One can also load just the template and pass an `object` as the JSON spec.
+An absolute URL can be provided to fetch content from a separate domain. One can also load just the template and pass an
+`object` as the JSON spec.
 
 ```javascript
 Handlebars.quick.renderAsync('#content' 'template-filename', { title: 'sherlock', body: 'watson' }, function () {
