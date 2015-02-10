@@ -36,6 +36,28 @@ describe('Handlebars', function () {
                 .toBe('<div class="entry"><h1>My New Post</h1><div class="body">This is my first post!</div></div>');
         });
 
+        it('must be able to fetch template asynchronously while spec is an object', function () {
+            var doneFn = jasmine.createSpy("success");
+
+            jasmine.Ajax.install(); // install fake ajax
+
+            // create fake and expected ajax response for template
+            jasmine.Ajax.stubRequest('post-entry.hbs').andReturn({
+                responseText: '<div class="entry"><h1>{{title}}</h1><div class="body">{{body}}</div></div>'
+            });
+
+            Handlebars.quick.renderAsync('#outlet', 'post-entry', {
+                title: 'My New Post',
+                body: 'Another post!'
+            }, function () {
+                expect(document.getElementById('outlet').innerHTML)
+                    .toBe('<div class="entry"><h1>My New Post</h1><div class="body">Another post!</div></div>');
+                doneFn();
+            });
+
+            expect(doneFn).toHaveBeenCalled();
+        });
+
         it('must be able to fetch template and spec asynchronously', function () {
             var doneFn = jasmine.createSpy("success");
 
