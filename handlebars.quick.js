@@ -1,4 +1,4 @@
-/*! handlebars-quick v2.0.0-development by Shamasis Bhattacharya <mail@shamasis.net> (2015-02-09) */
+/*! handlebars-quick v2.0.0-development by Shamasis Bhattacharya <mail@shamasis.net> (2015-02-10) */
 (function (glob) {
     glob.MicroAjax = function (url, callbackFunction) {
         this.bindFunction = function (caller, object) {
@@ -98,6 +98,11 @@
         getUrl: function (type, name) {
             var url = E;
 
+            // If direct URL calls are made, then we do not need to transform the URL
+            if (/^(http|https|ftp):\/\//.test(name)) {
+                return name;
+            }
+
             switch (type) {
             case 'template':
                 url += this.options.templatePath + name + this.options.templateFileExtension;
@@ -112,6 +117,20 @@
             }
 
             return url;
+        },
+
+        /**
+         * @param {string|object} item
+         * @param {*=} [value=]
+         */
+        configure: function (item, value) {
+            if (item && value !== undefined) {
+                this.options[item] = value;
+            }
+            // also accept an object to set multiple configurations simultaneously
+            else if (typeof item === 'object') {
+                Handlebars.Utils.extend(this.options, item);
+            }
         },
 
         /**
@@ -215,7 +234,6 @@
                 };
 
             if (typeof specName === 'string') {
-
                 this.fetch(this.getUrl(SPEC, specName), function (response) {
                     spec = JSON.parse(response);
                     renderIfPossible.call(this);

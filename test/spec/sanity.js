@@ -58,6 +58,30 @@ describe('Handlebars', function () {
             expect(doneFn).toHaveBeenCalled();
         });
 
+        it('must be able to fetch spec from an absolute URL while template is relative', function () {
+            var doneFn = jasmine.createSpy("success");
+
+            jasmine.Ajax.install(); // install fake ajax
+
+            // create fake and expected ajax response for template
+            jasmine.Ajax.stubRequest('post-entry.hbs').andReturn({
+                responseText: '<div class="entry"><h1>{{title}}</h1><div class="body">{{body}}</div></div>'
+            });
+            // create fake and expected ajax response for spec
+            jasmine.Ajax.stubRequest('http://jsonblob.com/api/blob/54d9820ee4b07f81d71a157d').andReturn({
+                responseText: '{"title": "My New Post", "body": "Another post!"}'
+            });
+
+            Handlebars.quick.renderAsync('#outlet', 'post-entry',
+                    'http://jsonblob.com/api/blob/54d9820ee4b07f81d71a157d', function () {
+                expect(document.getElementById('outlet').innerHTML)
+                    .toBe('<div class="entry"><h1>My New Post</h1><div class="body">Another post!</div></div>');
+                doneFn();
+            });
+
+            expect(doneFn).toHaveBeenCalled();
+        });
+
         it('must be able to fetch template and spec asynchronously', function () {
             var doneFn = jasmine.createSpy("success");
 
