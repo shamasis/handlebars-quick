@@ -73,7 +73,7 @@ function to fetch them using `AJAX`.
 </html>
 ```
 
-> Note that by default by default `Handlebars.quick` expects the template file's name to have a `.hbs` extension and the
+> Note that by default `Handlebars.quick` expects the template file's name to have a `.hbs` extension and the
 > specification file to have `.json` extension. It also expects the file to stay in a path relative to the URL. You can
 > configure these behaviours in `Handlebars.quick.options` object.
 
@@ -110,8 +110,8 @@ Handlebars.quick.registerPartialAsync(['partial-name-1', 'partial-name-2'], func
 
 ### Configuration options
 
-The following is the default configuration object and it's default values. The option names are likely to be self
-explanatory.
+The following is the default configuration object located at `Handlebars.quick.options` and it's default values. The
+option names are likely to be self explanatory.
 
 ```javascript
 {
